@@ -21,7 +21,7 @@ public class AppConfig { // DI ( 의존관계 주입 )
     }
      */
 
-    // 리팩토링 후
+    // 리팩토링 후: '역할'과 '구현'이 한 눈에 들어옴 => 전체 구성을 파악하기 쉬움
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
     }
