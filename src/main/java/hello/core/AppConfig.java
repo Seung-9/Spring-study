@@ -9,9 +9,11 @@ import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class AppConfig { // DI ( 의존관계 주입 )
-
+    // 스프링 컨테이너 설정
     /* 리팩토링 전: '역할'에 따른 '구현'이 잘 안 보임
     public MemberService memberService() {
         return new MemberServiceImpl(new MemoryMemberRepository());
@@ -23,18 +25,22 @@ public class AppConfig { // DI ( 의존관계 주입 )
      */
 
     // 리팩토링 후: '역할'과 '구현'이 한 눈에 들어옴 => 전체 구성을 파악하기 쉬움
+    @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
     }
 
+    @Bean
     public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
+    @Bean
     public OrderService orderService() {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
+    @Bean
     public DiscountPolicy discountPolicy() {
         return new FixDiscountPolicy();
     }
