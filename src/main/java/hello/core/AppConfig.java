@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig { // DI ( 의존관계 주입 )
+
     // 스프링 컨테이너 설정
     /* 리팩토링 전: '역할'에 따른 '구현'이 잘 안 보임
     public MemberService memberService() {
