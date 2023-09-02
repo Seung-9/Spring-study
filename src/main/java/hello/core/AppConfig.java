@@ -25,23 +25,28 @@ public class AppConfig { // DI ( 의존관계 주입 )
      */
 
     // 리팩토링 후: '역할'과 '구현'이 한 눈에 들어옴 => 전체 구성을 파악하기 쉬움
+
     @Bean
     public MemberService memberService() {
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
     @Bean
     public DiscountPolicy discountPolicy() {
+        System.out.println("call AppConfig.discountPolicy");
         return new FixDiscountPolicy();
     }
 }
