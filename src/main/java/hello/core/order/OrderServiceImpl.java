@@ -23,4 +23,9 @@ public class OrderServiceImpl implements OrderService { // 뭐가 인터페이�
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    // 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
