@@ -15,16 +15,16 @@ class StatefulServiceTest {
         StatefulService statefulService2 = ac.getBean(StatefulService.class);
 
         // ThreadA: A사용자 10000원을 주문함
-        statefulService1.order("userA", 10000);
+        int userAPrice = statefulService1.order("userA", 10000);
 
         // ThreadB: B사용자 20000원을 주문함
-        statefulService2.order("userB", 20000);
+        int userBPrice = statefulService2.order("userB", 20000);
 
         // ThreadA: A사용자가 주문 금액을 조회
-        int price = statefulService1.getPrice();
-        System.out.println("price = " + price);
+//        int price = statefulService1.getPrice();
+        System.out.println("price = " + userAPrice);
 
-        assertThat(statefulService1.getPrice()).isEqualTo(20000);
+//        assertThat(statefulService1.).isEqualTo(20000);
 
         // 우리가 원하는 값은 10000원이지만 20000이 출력됨
         // 그 이유는 statefulService1이나 2 둘 다 같은 인스턴스를 사용하고 있음 == 비교를 하면 암.
