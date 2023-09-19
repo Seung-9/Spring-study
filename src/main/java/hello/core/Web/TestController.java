@@ -9,7 +9,7 @@ public class TestController {
 
     @GetMapping("/")
     public String test(Model model) {
-        model.addAttribute("testName", "thymeleaf test name");
+        model.addAttribute("testName", "Thymeleaf test name");
 
         return "test";
     }
